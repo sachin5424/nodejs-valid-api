@@ -9,12 +9,16 @@ const Email_verification = mongoose.Schema({
         required:true,
     },
     email_verification_otp:{
-        type:Number,
+        type:String,
         unique:true,
         required:true,
         min:4,
         max:4,
     },
+    date:{
+        type:Date,
+        default:Date.now
+     }
 
 })
 module.exports = mongoose.model('Email_verifications',Email_verification)
