@@ -4,9 +4,8 @@ const register = require('../models/user/register')
 var passwordHash = require('password-hash');
 var validator = require("email-validator");
 const bcrypt = require('bcrypt');
-
-
-
+const nodemailer = require('nodemailer');
+const user_email_verfiy_save = require('../models/user/email_verifier')
 router.get('/', async (req, res) => {
     console.log('ok');
 })
@@ -58,6 +57,34 @@ router.post('/register', async (req, res) => {
                     })
                     user.save()
                     res.status(201).send(user)
+                    var transporter = nodemailer.createTransport({
+                        service: 'gmail',
+                        auth: {
+                          user: 'easyeasytolearn70@gmail.com',
+                          pass: 'Viraj@5424'
+                        }
+                      });
+                      
+                      var mailOptions = {
+                        from: 'easyeasytolearn70@gmail.com',
+                        to: `${user.email}`,
+                        subject: 'Sending Email using Node.js testing',
+                        text: 'That was easy!'
+                      };
+                      
+                      transporter.sendMail(mailOptions, function(error, info){
+                        if (error) {
+                          console.log(error);
+                        } else {
+                          console.log('Email sent: ' + info.response);
+                        }
+                      });
+                    var random_opt =  Math.floor(1000 + Math.random() * 9000)
+                    const Verfiy_email = new user_email_verfiy_save({
+                        email:user.email,
+                        email_verification_otp:random_opt
+                    })
+                    Verfiy_email.save()                  
                 }
             });
         }
