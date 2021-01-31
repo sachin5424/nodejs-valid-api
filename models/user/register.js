@@ -1,11 +1,4 @@
 const mongoose = require('mongoose');
-
-
-var validateEmail = function(email) {
-    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return re.test(email)
-};
-
 const Register = mongoose.Schema({
     username:{
         type:String,
@@ -29,6 +22,10 @@ const Register = mongoose.Schema({
     isActive:{
        type:Boolean,
        default:false,
+    },
+    date:{
+       type:Date,
+       default:Date.now
     }
 })
 module.exports = mongoose.model('jwt',Register)
