@@ -32,12 +32,12 @@ router.post('/register',async(req,res)=>{
                 console.log(check_valid_user[key].username);
                 if (username==check_valid_user[key].username) {
                     return res.status(401).json({
-                        me:"username is already registered"
+                        massage:"username is already registered"
                     })
                 }
                 if (email==check_valid_user[key].email) {
                     return res.status(401).json({
-                        me:"Email is already registered "
+                        massage:"Email is already registered "
                     })
                 }      
             }
