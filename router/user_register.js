@@ -31,7 +31,6 @@ router.post('/register', async (req, res) => {
         const check_valid_user = await register.find({})
         if (check_valid_user) {
             for (var key in check_valid_user) {
-                console.log(check_valid_user[key].username);
                 if (username == check_valid_user[key].username) {
                     return res.status(401).json({
                         massage: "username is already registered"
