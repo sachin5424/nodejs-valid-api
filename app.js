@@ -10,7 +10,6 @@ const mongo_sever = require('./models/conn')
 app.use(cors())
 app.use(bodyParser.json())
 app.use('/',user_register)
-
 app.use('/user',user_login)
 app.use('/user/email',user_email_verfiy)
 app.use('/user/email',user_email_update)
