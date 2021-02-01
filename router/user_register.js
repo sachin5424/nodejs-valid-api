@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const register = require('../models/user/register')
-var passwordHash = require('password-hash');
+// var passwordHash = require('password-hash');
 var validator = require("email-validator");
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
