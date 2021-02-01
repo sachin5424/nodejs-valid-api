@@ -40,18 +40,8 @@ router.post('/verification',async(req,res)=>{
     } catch (error) {
         res.status(500).send(error)
     }
-})
+});
 
-    //  update email
-
-router.get('/update'),async(req,res)=>{
-       try {
-           
-           console.log(req.body);
-       } catch (error) {
-           res.status(500).send(error)
-       }
-}
 
 module.exports = router
 
